@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- http://echarts.baidu.com/tutorial.html#%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%9B%B4%E6%96%B0 -->
+<!-- 在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行 -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>异步加载</title>
+        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+        <script src="echarts.min.js"></script>
+        <script src="vintage.js"></script>
+        <style type="text/css">
+            *{margin: 0}
+        </style>
+    </head>
+    <body>
+        <div id="main" style="width: 100%;height:560px;"></div>
+        <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'), 'vintage');
+        // 显示标题，图例和空的坐标轴
+        myChart.setOption({
+            title: {
+                text: '异步数据加载示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]
+        });
+
+        $.get('data.json').done(function (data) {
+            // 填入数据
+            myChart.setOption({
+                xAxis: {
+                    data: data.categories
+                },
+                series: [{
+                    // 根据名字对应到相应的系列
+                    name: '销量',
+                    data: data.data
+                }]
+            });
+        });
+        </script>
+    </body>
+</html>
