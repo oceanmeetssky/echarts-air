@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ECharts</title>
+        <!-- 引入 echarts.js -->
+        <script src="echarts.min.js"></script>
+        <script src="vintage.js"></script>
+        <!-- <script src="dark.js"></script> -->
+        <style type="text/css">
+            *{margin: 0}
+        </style>
+    </head>
+    <body>
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="width: 100%;height:600px;"></div>
+        <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'), 'vintage');
+        // 指定图表的配置项和数据
+        myChart.setOption({
+            title: {
+                text: 'app使用情况'
+            },
+            series : [
+            {
+                name: 'app使用情况',
+
+                type: 'pie',
+                radius: '55%',
+                roseType: 'angle',//南丁格尔图
+                tooltip: {
+                    trigger:'item',
+                    formatter:"{a} <br/>{b} : {c} ({d}%)"//对应 图name name,value,百分数
+                },
+                label:{
+                    normal:{
+                        formatter:" {b} : {c} ({d}%)"
+                    }
+                },
+                data:[
+                    {value:235, name:'知乎'},
+                    {value:274, name:'chrome'},
+                    {value:310, name:'QQ'},
+                    {value:335, name:'微博'},
+                    {value:400, name:'微信'}
+                ],
+                itemStyle: {
+                    normal: {
+                        // 阴影的大小
+                        shadowBlur: 200,
+                        // 阴影水平方向上的偏移
+                        shadowOffsetX: 0,
+                        // 阴影垂直方向上的偏移
+                        shadowOffsetY: 0,
+                        // 阴影颜色
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+}
+            }
+            ]
+        })
+        </script>
+    </body>
+</html>
