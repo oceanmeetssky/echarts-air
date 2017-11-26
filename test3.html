@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <!-- http://echarts.baidu.com/tutorial.html#%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%9B%B4%E6%96%B0 -->
-<!-- 在图表初始化后不管任何时候只要通过 jQuery 等工具异步获取数据后通过 setOption 填入数据和配置项就行 -->
-<!-- 需要在浏览器快捷方式后加上“ --allow-file-access-from-files”（注意有空格），以实现本地访问 -->
-<!-- 官方文档有严重的问题！ var data = JSON.parse(data); 必须要有这句话-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>异步加载</title> 
-        <script type="text/javascript" src="jquery-3.2.1.min.js"></script>        
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>数据的动态更新</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>        
         <script src="echarts.min.js"></script>
         <script src="vintage.js"></script>
-        <style type="text/css">
-            *{margin: 0}
-        </style>
-    </head>
-    <body>
-        <div id="main" style="width: 100%;height:560px;"></div>
+		<style type="text/css">
+			*{
+				margin: 0;padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div id="main" style="width: 100%;height:560px;"></div>
         <script type="text/javascript">
         var myChart = echarts.init(document.getElementById('main'), 'vintage');
         // 
@@ -26,7 +29,7 @@
             // console.dir(data.data);
             myChart.setOption({
                 title: {
-                    text: '异步数据加载示例',
+                    text: '数据动态更新',
                     textStyle: {fontSize: '25'},
                     left: 'center',
                     top: '20px'
@@ -49,5 +52,7 @@
             });
         });
         </script>
-    </body>
+		</div>
+		
+	</body>
 </html>

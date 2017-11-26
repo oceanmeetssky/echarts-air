@@ -1,1 +1,16 @@
-{"categories": ["1", "2", "3", "4", "5"],"data":[1, 2, 3, 4, 5]}
+{
+    "categories":[
+        "apple",
+        "orange",
+        "pinaple",
+        "grape",
+        "watermelon"
+    ],
+    "data":[
+        14,
+        24,
+        35,
+        4,
+        5
+    ]
+}
